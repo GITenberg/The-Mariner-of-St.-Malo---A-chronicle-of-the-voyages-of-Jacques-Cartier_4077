@@ -1,0 +1,45 @@
+_repo: The-Mariner-of-St.-Malo---A-chronicle-of-the-voyages-of-Jacques-Cartier_4077
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Leacock, Stephen
+    alias: Leacock, Stephen Butler
+    birthdate: 1869
+    deathdate: 1944
+    gutenberg_agent_id: '1221'
+    url: http://www.gutenberg.org/2009/agents/1221
+    wikipedia: http://en.wikipedia.org/wiki/Stephen_Leacock
+  editors:
+  - agent_name: Langton, H. H. (Hugh Hornby)
+    alias: Langton, Hugh Hornby
+    birthdate: 1862
+    deathdate: 1953
+    gutenberg_agent_id: '4517'
+    url: http://www.gutenberg.org/2009/agents/4517
+  - agent_name: Wrong, George McKinnon
+    alias: Wrong, George M. (George McKinnon)
+    birthdate: 1860
+    deathdate: 1948
+    gutenberg_agent_id: '1002'
+    url: http://www.gutenberg.org/2009/agents/1002
+    wikipedia: http://en.wikipedia.org/wiki/George_MacKinnon_Wrong
+description: ''
+gutenberg_issued: '2003-05-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '4077'
+language: en
+publication_note: 'Toronto :  [s.n.],  1915'
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+series_note: 'Chronicles of Canada series: Volume 02'
+subjects:
+- !lcsh 'New France -- Discovery and exploration'
+- !lcc 'E011'
+- !lcsh 'America -- Discovery and exploration -- French'
+- !lcsh 'Cartier, Jacques, 1491-1557'
+- !lcc 'F1001'
+- GITenberg
+title: 'The Mariner of St. Malo : A chronicle of the voyages of Jacques Cartier'
+url: http://www.gutenberg.org/ebooks/4077
