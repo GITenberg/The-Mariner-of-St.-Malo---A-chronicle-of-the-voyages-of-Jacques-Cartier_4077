@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: j8BvedRXHmhb31zw/q2NJnGo1Q6aGtgXkmlIRyX3Z4fO3FRHfElynzXdKrR94Z9O8IAGDG+XYN6m8yG3L5vtGafWeSwPS9iBPuToJqBA6DI0Aoet7xt1apkiSOSKAeJXJ4kOM11L7Trt1xn0+IsjQioN1fnZlRewFWfYyXAfaTj/4myUBBLgob2FnWbuFKBP2lKFaH9itQVByqwewckGyNkDtOA1A+5nMUyypi4LERFXHL1VYrrFpv2Prsx9e6SaRccqtpeem8LQQjZfShhmEHLpvtp6zMxDFeHeysFIZS+EXVm5RrqBAN7h2OeQXbd8J+Cg8z8VZV//iXER7Xz8qtJYVRcVA8WEp5MgiwRhgaHEYCt662mlQL6umatbz141KZiTYGxrwmEQOcNcAg8r17rtixA0Fv4CU0AU8XlfldNIwu7nGfM/Lni0nrhIeY776D8Vux1zPxoAHw5CLakz4ed5133PDnKPk9/gXIr+y9Q1jWvltjb7WJlIXW7mnI/0EFNSoXZtWdACI8JsxG6NkAHor9Rgh/RSGR4N/iVnPojVEQ81WWJ3K4G/4xeAzqXxdLThlMQYf+fxLBbpeHKjsb7D4+vNKoE1uAgIs6xaQ0e1qJGO5ceyqsnKl3rK/9r3XzF64zfOeSl1DeqtObyFwiwmlv5b6UpqyJYoPJpeQxU=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Mariner-of-St.-Malo---A-chronicle-of-the-voyages-of-Jacques-Cartier_4077
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
